@@ -1,0 +1,26 @@
+server:
+  port: 7002
+
+spring:
+  application:
+    name: parsers-service
+  #profiles: local
+  kafka:
+    bootstrap-servers: http://kafka-server:9092
+    template:
+      default-topic: parse-comic-task
+    consumer:
+      group-id: comic-parsers-service
+      max-poll-records: 2000
+    producer:
+      client-id: comic-parsers-service
+  mandatory-file-encoding: UTF-8
+
+logging:
+  level:
+    org.springframework:
+      security: DEBUG
+      web: DEBUG
+
+parser:
+  max-per-task: 10

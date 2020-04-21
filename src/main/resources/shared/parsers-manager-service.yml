@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: parser-manager-service
+  kafka:
+    bootstrap-servers: http://kafka-server:9092
+    producer:
+      client-id: parser-manager-service
+    template:
+      default-topic: parse-comic-task
+    consumer:
+      group-id: parser-manage-service-group-1
+      max-poll-records: 2000
+  mandatory-file-encoding: UTF-8
+
+  elasticsearch:
+    rest:
+      uris: http://elasticsearch:9200
+  data:
+    mongodb:
+      database: picstories
+      port: 27017
+      uri: http://mongo:27017/picstories
+      username: picstories
+      password: picstories
+
+logging:
+  level:
+    org.springframework:
+      security: DEBUG
+      web: DEBUG
+
+tpd:
+  consume-topic: update-comic-task
+
+server:
+  port: 7003

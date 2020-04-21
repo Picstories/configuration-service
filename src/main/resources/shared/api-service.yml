@@ -1,0 +1,9 @@
+server:
+  port: 7001
+
+spring:
+  application:
+    name: api-service
+  elasticsearch:
+    rest:
+      uris: http://elasticsearch:9200

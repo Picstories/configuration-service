@@ -1,0 +1,64 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
+    id 'com.palantir.docker' version "0.22.1"
+    id 'com.palantir.docker-run' version '0.22.1'
+    id 'com.palantir.docker-compose' version '0.22.1'
+}
+
+docker {
+    name "picstories/picstories-configuration:virusmaster"
+    files 'build/libs/picstories-configuration-service-1.0-SNAPSHOT.jar'
+    dockerfile file('Dockerfile')
+    tag 'DockerHub', 'virusmaster'
+    pull true
+    noCache true
+}
+
+dockerRun {
+    name "picstories/picstories-configuration:virusmaster"
+    image "picstories-configuration"
+    ports "9090:9090"
+    clean true
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+apply plugin: 'java-library-distribution'
+
+group 'org.picstories.configuration'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.2.5.RELEASE'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-config-server', version: '2.2.2.RELEASE'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: '2.1.13.RELEASE', ext: 'pom'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-dependencies', version: 'Greenwich.SR3', ext: 'pom'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: '2.2.1.RELEASE'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test:2.2.5.RELEASE') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+distZip.shouldRunAfter(build)
+
+jar {
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.MF'
+    manifest {
+        attributes 'Main-Class': 'org.picstories.configuration.ApplicationConfiguration',
+                'Class-Path': configurations.runtime.files.collect { "lib/$it.name" }.join(' ')
+    }
+}
