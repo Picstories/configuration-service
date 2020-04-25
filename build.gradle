@@ -21,13 +21,6 @@ docker {
     noCache true
 }
 
-dockerRun {
-    name "picstories/picstories-configuration:virusmaster"
-    image "picstories-configuration"
-    ports "9090:9090"
-    clean true
-}
-
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'maven'
