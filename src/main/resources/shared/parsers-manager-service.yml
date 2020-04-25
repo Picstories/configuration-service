@@ -1,14 +1,14 @@
 spring:
   application:
-    name: parser-manager-service
+    name: parsers-manager-service
   kafka:
     bootstrap-servers: http://kafka-server:9092
     producer:
-      client-id: parser-manager-service
+      client-id: parsers-manager-service
     template:
       default-topic: parse-comic-task
     consumer:
-      group-id: parser-manage-service-group-1
+      group-id: parsers-manage-service-group-1
       max-poll-records: 2000
   mandatory-file-encoding: UTF-8
 
