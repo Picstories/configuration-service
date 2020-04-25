@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: parsers-service
+    name: comics-parsers-service
   #profiles: local
   kafka:
     bootstrap-servers: http://kafka-server:9092
