@@ -10,10 +10,10 @@ spring:
     template:
       default-topic: parse-comic-task
     consumer:
-      group-id: comic-parsers-service
+      group-id: comics-parsers-service
       max-poll-records: 2000
     producer:
-      client-id: comic-parsers-service
+      client-id: comics-parsers-service
   mandatory-file-encoding: UTF-8
 
 logging:
