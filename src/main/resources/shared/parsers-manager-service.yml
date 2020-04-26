@@ -16,7 +16,7 @@ spring:
     jest:
       proxy:
         host: elasticsearch
-        port: 9300
+        port: 9200
   data:
     mongodb:
       database: picstories
