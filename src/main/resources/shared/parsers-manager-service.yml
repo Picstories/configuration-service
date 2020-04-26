@@ -20,10 +20,10 @@ spring:
   data:
     mongodb:
       database: picstories
-      port: 27017
-      uri: mongodb://mongo:27017/picstories
-      username: picstories
-      password: picstories
+      #port: 27017
+      uri: mongodb://picstories:picstories@mongo:27017/picstories/?replicaSet=rs0
+      #username: picstories
+      #password: picstories
 
 logging:
   level:
