@@ -21,7 +21,7 @@ spring:
     mongodb:
       database: picstories
       port: 27017
-      uri: http://mongo:27017/picstories
+      uri: mongodb://mongo:27017/picstories
       username: picstories
       password: picstories
 
