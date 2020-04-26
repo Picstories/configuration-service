@@ -13,8 +13,10 @@ spring:
   mandatory-file-encoding: UTF-8
 
   elasticsearch:
-    hostname: elasticsearch
-    port: 9300
+    jest:
+      proxy:
+        host: elasticsearch
+        port: 9300
   data:
     mongodb:
       database: picstories

@@ -5,5 +5,7 @@ spring:
   application:
     name: api-service
   elasticsearch:
-    hostname: elasticsearch
-    port: 9300
+    jest:
+      proxy:
+        host: elasticsearch
+        port: 9300
