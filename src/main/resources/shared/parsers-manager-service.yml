@@ -8,7 +8,7 @@ spring:
     template:
       default-topic: parse-comic-task
     consumer:
-      group-id: parsers-manage-service-group-1
+      group-id: parsers-manager-service-group-1
       max-poll-records: 2000
   mandatory-file-encoding: UTF-8
 
